@@ -1,6 +1,10 @@
 FROM nvidia/cuda:12.8.0-cudnn-runtime-ubuntu22.04
 
-VOLUME Qwen2.5-14B/ /Qwen 
+EXPOSE 52415
+EXPOSE 5678
+EXPOSE 5679
+EXPOSE 8000
+EXPOSE 8001
 
 ENV DEBIAN_FRONTEND=noninteractive
 
@@ -12,7 +16,10 @@ RUN apt-get update && apt-get install -y \
   git-all \
   python3 \
   python3-pip \
-  libglib2.0-0
+  libglib2.0-0 \
+  clang
+
+RUN apt-get
 
 RUN pip3 install tensorflow
 
@@ -26,3 +33,5 @@ WORKDIR /app/exo
 
 # Install exo in editable mode
 RUN pip3 install -e .
+
+RUN pip3 install llvmlite
