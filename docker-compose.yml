@@ -16,5 +16,6 @@ services:
       - "5679:5679/udp"
       - "8000:8000"
       - "8001:8001"
+      - "8080:8080"
     stdin_open: true
     tty: true
